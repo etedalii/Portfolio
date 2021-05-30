@@ -35,7 +35,7 @@ router.get("/contact", function (req, res, next) {
 
 /* GET About Me page. */
 router.get("/about", function (req, res, next) {
-  res.render("index", { title: "About", message: "" });
+  res.render("index", { title: "About", message: "I, Mohammad Etedali with More than 8 years’ experience in programming with Microsoft products, am a responsible, highly motivated, highly organized, result-oriented, and self-motivated person. I have expertise in C# .Net, SQL Server, and ASP.Net MVC." });
 });
 
 module.exports = router;
