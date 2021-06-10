@@ -1,0 +1,41 @@
+<!-- File name: book.ejs
+	  Author's name: Mohammad Etedali - 301056465
+	  Website address: https://comp299.herokuapp.com
+    Date: 6/10/21
+	  Description: -->
+
+<% include partials/header.ejs %> <% include partials/main_nav.ejs %>
+
+<!--Main page-->
+<main class="container">
+  <div class="row">
+    <div class="col-m1-offset-3 col-md-8">
+      <h1><% title %> </h1>
+      <br/>
+      <table class="table table-bordered table-striped table-hover">    
+          <thead>
+              <tr>
+                  <th class="text-center">Name</th>
+                  <th class="text-center">Author</th>
+                  <th class="text-center">Published</th>
+                  <th class="text-center">Description</th>
+                  <th class="text-center">Price</th>
+              </tr>
+          </thead>
+          <tbody>
+              <% for (let i = 0; i < BookList.length; i++) { %>
+                 <tr>
+                     <td class="text-center"><%= BookList[i].name %></td>
+                     <td class="text-center"><%= BookList[i].author %></td>
+                     <td class="text-center"><%= BookList[i].published %></td>
+                     <td class="text-center"><%= BookList[i].Description %></td>
+                     <td class="text-center"><%= BookList[i].price %></td>
+                 </tr> 
+             <% } %>
+          </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<%- include partials/bottom_nav.ejs %> <% include partials/footer.ejs %>

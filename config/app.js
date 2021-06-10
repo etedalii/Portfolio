@@ -13,7 +13,7 @@ let mongoose = require("mongoose");
 let db = require("./db");
 
 // Point to DB URI
-mongoose.connect(db.URI, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(db.URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 let monogoDB = mongoose.connection;
 monogoDB.on("error", console.error.bind(console, "Connection Error"));
@@ -25,6 +25,7 @@ monogoDB.once("open", () => {
 
 //change the path because put app.js in config folder
 let indexRouter = require("../routes/index");
+let bookRouter = require("../routes/book");
 
 let app = express();
 
@@ -39,6 +40,9 @@ app.use(express.static(path.join(__dirname, "../public")));
 app.use(express.static(path.join(__dirname, "../node_modules")));
 
 app.use("/", indexRouter);
+
+//For using the router
+app.use('/book-list',bookRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
