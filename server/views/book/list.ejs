@@ -1,0 +1,53 @@
+<!-- File name: book.ejs
+	  Author's name: Mohammad Etedali - 301056465
+	  Website address: https://comp299.herokuapp.com
+    Date: 6/10/21
+	  Description: -->
+
+<%- include ../partials/header.ejs %> <%- include ../partials/main_nav.ejs %>
+
+<!--Main page-->
+<main class="container">
+  <div class="row">
+    <div class="offset-m-3 col-md-10">
+      <h1><% title %></h1>
+      <a href="/book-list/add" class="btn btn-primary" role="button">
+        <i class="fas fa-plus-circle"></i> Add a Book</a
+      >
+      <br />
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+            <th class="text-center col-2">Name</th>
+            <th class="text-center col-2">Author</th>
+            <th class="text-center col-1">Published</th>
+            <th class="text-center col-4">Description</th>
+            <th class="text-center col-1">Price</th>
+            <th class="text-center col-1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let i = 0; i < BookList.length; i++) { %>
+          <tr>
+            <td class="text-center col-2"><%= BookList[i].name %></td>
+            <td class="text-center col-2"><%= BookList[i].author %></td>
+            <td class="text-center col-1"><%= BookList[i].published %></td>
+            <td class="text-center col-4"><%= BookList[i].Description %></td>
+            <td class="text-center col-1"><%= BookList[i].price %></td>
+            <td class="text-center col-1">
+              <a
+                href="/book-list/edit/<%= BookList[i]._id %>"
+                class="btn btn-primary btn-sm"
+              > <i class="fas fa-pencil-alt"></i></a>
+              <a
+              href="/book-list/delete/<%= BookList[i]._id %>" class="btn btn-danger btn-sm"> <i class="fas fa-trash-alt"></i></a>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<%- include ../partials/bottom_nav.ejs %> <%- include ../partials/footer.ejs %>
