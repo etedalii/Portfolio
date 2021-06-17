@@ -5,5 +5,6 @@
 //   Description: This file is used for connection to the mongo db uri
 
 module.exports = {
-    "URI" :"mongodb://localhost/portfolio_db"
+    //"URI" :"mongodb://localhost/portfolio_db"
+    "URI" : "mongodb+srv://etedali:ctABSHt8e5RQDpeA@mongodbserver.bbosx.mongodb.net/portfolio_db?retryWrites=true&w=majority"
 }
