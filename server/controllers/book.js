@@ -13,7 +13,11 @@ module.exports.displayBookList = (req, res, next) => {
       //console.log(BookList);
 
       // book is our view and we pass BookList object to the view, ejs I mean
-      res.render("book/list", { title: "Books", BookList });
+      res.render("book/list", {
+        title: "Books",
+        BookList,
+        currentUser: req.user ? req.user.email : "",
+      });
     }
   });
 };

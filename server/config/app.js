@@ -8,6 +8,13 @@ let createError = require("http-errors");
 let express = require("express");
 let path = require("path");
 
+//*************Authentication Section ****************** */
+let session = require("express-session");
+let passport = require("passport");
+let passportlocal = require("passport-local");
+let localStategy = passportlocal.Strategy;
+let flash = require("connect-flash");
+
 //*******************Database Configuration ********************************
 let mongoose = require("mongoose");
 let db = require("./db");
@@ -39,10 +46,39 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "../../public")));
 app.use(express.static(path.join(__dirname, "../../node_modules")));
 
+//*******************Setup express session */
+app.use(
+  session({
+    secret: "SomeSceret",
+    saveUninitialized: false,
+    resave: false,
+  })
+);
+
+// ***********Initialize flash
+app.use(flash());
+
+//********** Initialize passport */
+app.use(passport.initialize());
+app.use(passport.session());
+
+// ******** Passport user configuation ************/
+//create a user model instance
+let userModel = require("../models/user");
+let User = userModel.User;
+
+//Implement a user authentication stategy
+
+
+//Serialize and Deserialize user info
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser());
+passport.use(User.createStrategy())
+
 app.use("/", indexRouter);
 
 //For using the router
-app.use('/book-list',bookRouter);
+app.use("/book-list", bookRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

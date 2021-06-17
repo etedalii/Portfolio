@@ -11,9 +11,11 @@
   <div class="row">
     <div class="offset-m-3 col-md-10">
       <h1><% title %></h1>
+      <% if(typeof currentUser == 'string' && currentUser) { %>
       <a href="/book-list/add" class="btn btn-primary" role="button">
         <i class="fas fa-plus-circle"></i> Add a Book</a
       >
+      <% } %>
       <br />
       <table class="table table-bordered table-striped table-hover">
         <thead>
@@ -23,7 +25,10 @@
             <th class="text-center col-1">Published</th>
             <th class="text-center col-4">Description</th>
             <th class="text-center col-1">Price</th>
+            <!-- Check if user not login can not edit or delete-->
+            <% if(typeof currentUser == 'string' && currentUser) { %>
             <th class="text-center col-1"></th>
+            <% } %>
           </tr>
         </thead>
         <tbody>
@@ -34,6 +39,8 @@
             <td class="text-center col-1"><%= BookList[i].published %></td>
             <td class="text-center col-4"><%= BookList[i].Description %></td>
             <td class="text-center col-1"><%= BookList[i].price %></td>
+            <!-- Check if user not login can not edit or delete-->
+            <% if(typeof currentUser == 'string' && currentUser) { %>
             <td class="text-center col-1">
               <a
                 href="/book-list/edit/<%= BookList[i]._id %>"
@@ -42,6 +49,8 @@
               <a
               href="/book-list/delete/<%= BookList[i]._id %>" class="btn btn-danger btn-sm"> <i class="fas fa-trash-alt"></i></a>
             </td>
+            <% } %>
+            <!-- End Check -->
           </tr>
           <% } %>
         </tbody>

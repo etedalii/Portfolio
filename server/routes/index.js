@@ -26,4 +26,13 @@ router.get("/contact", indexController.displayContactPage);
 /* GET About Me page. */
 router.get("/about", indexController.displayAboutPage);
 
+/* Get Login Page for access to the website */
+router.get('/login', indexController.displayLoginPage)
+
+/* Get Login Page for access to the website */
+router.post('/login', indexController.processLoginPage)
+
+/* Get logout the user from the website */
+router.get('/logout', indexController.performLogout)
+
 module.exports = router;
