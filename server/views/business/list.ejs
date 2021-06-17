@@ -14,7 +14,7 @@
     <div class="offset-m-3 col-md-10">
       <h1><% title %></h1>
       <% if(typeof currentUser == 'string' && currentUser) { %>
-      <a href="/contact-list/add" class="btn btn-primary" role="button">
+      <a href="/contact-list/add" class="btn btn-primary mb-2" role="button">
         <i class="fas fa-plus-circle"></i> Add a Contact</a
       >
       <% } %>
@@ -22,9 +22,9 @@
       <table class="table table-bordered table-striped table-hover">
         <thead>
           <tr>
-            <th class="text-center col-2">Contact Name</th>
+            <th class="text-center col-3">Contact Name</th>
             <th class="text-center col-2">Contact Number</th>
-            <th class="text-center col-1">E-mail</th>
+            <th class="text-center col-3">E-mail</th>
             <!-- Check if user not login can not edit or delete-->
             <% if(typeof currentUser == 'string' && currentUser) { %>
             <th class="text-center col-1"></th>
@@ -34,9 +34,9 @@
         <tbody>
           <% for (let i = 0; i < BusinessContactList.length; i++) { %>
           <tr>
-            <td class="text-center col-2"><%= BusinessContactList[i].name %></td>
+            <td class="text-center col-3"><%= BusinessContactList[i].name %></td>
             <td class="text-center col-2"><%= BusinessContactList[i].number %></td>
-            <td class="text-center col-1"><%= BusinessContactList[i].email %></td>
+            <td class="text-center col-3"><%= BusinessContactList[i].email %></td>
             <!-- Check if user not login can not edit or delete-->
             <% if(typeof currentUser == 'string' && currentUser) { %>
             <td class="text-center col-1">

@@ -1,3 +1,10 @@
+/* File name: business.ejs
+    Author's name: Mohammad Etedali - 301056465
+	Website address: https://comp299.herokuapp.com
+    Date: 6/17/21
+  	Description: this file is responsible for CRUD and all activity for BUsiness Contact page
+*/
+
 const express = require("express");
 let router = express.Router();
 const mongoose = require("mongoose");
@@ -6,6 +13,9 @@ const mongoose = require("mongoose");
 let Contact = require("../models/business");
 
 module.exports.displayBusinessContactList = (req, res, next) => {
+  //this variable is used for sort
+  //I create a varialbe for future if I want to write dynamic sort
+  var mysort = { name: 1 };  
     Contact.find((err, BusinessContactList) => {
     if (err) {
       return console.error(err);
@@ -14,10 +24,10 @@ module.exports.displayBusinessContactList = (req, res, next) => {
       res.render("business/list", {
         title: "BusinessContact",
         BusinessContactList,
-        currentUser: req.user ? req.user.email : "",
+        currentUser: req.user ? req.user.username : "",
       });
     }
-  });
+  }).sort(mysort);
 };
 
 //This calll for get

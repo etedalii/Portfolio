@@ -22,7 +22,7 @@ function requireAuth(req, res, next) {
 }
 
 // Get a Route for business contact list apge
-router.get("/", businessController.displayBusinessContactList);
+router.get("/", requireAuth, businessController.displayBusinessContactList);
 
 /* Get a Route for Add page - Create page */
 router.get("/add", requireAuth, businessController.addBusinessContact);

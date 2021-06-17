@@ -1,3 +1,10 @@
+/* File name: index.ejs
+    Author's name: Mohammad Etedali - 301056465
+	Website address: https://comp299.herokuapp.com
+    Date: 6/17/21
+  	Description: this file is responsible for controll all process and call proper page or method after user click on menu
+*/
+
 const express = require("express");
 let router = express.Router();
 const mongoose = require("mongoose");
@@ -80,18 +87,21 @@ module.exports.processLoginPage = (req, res, next) => {
       if (err) {
         return next(err);
       }
-
-      return res.redirect("/book-list");
+      //show the page of business contact 
+      return res.redirect("/contact-list");
     });
   })(req, res, next);
 };
 
 //I create this because use for register a user
+// we don't have register for but I wrote this module for insert user in first time
 module.exports.processRegisterPage = (req, res, next) => {
   let newUser = new User({
     username: req.body.username,
     password: req.body.password,
     email: req.body.email,
+    name: req.body.name,
+    lastname: req.body.lastname,
   });
 
   User.register(newUser, req.body.password, (user) => {

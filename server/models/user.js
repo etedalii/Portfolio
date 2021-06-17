@@ -20,7 +20,17 @@ let User = mongoose.Schema(
         default: '',
         trim: true,
         require: "email is required",
-      }
+      },
+      name: {
+        type: String,
+        default: '',
+        trim: true,
+      },
+      lastname: {
+        type: String,
+        default: '',
+        trim: true,
+      },
   },
   {
     collection: "users",

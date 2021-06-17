@@ -35,7 +35,6 @@ monogoDB.once("open", () => {
 //change the path because put app.js in config folder
 let indexRouter = require("../routes/index");
 let contactRouter  = require('../routes/business')
-let bookRouter = require("../routes/book");
 
 let app = express();
 
@@ -81,7 +80,6 @@ passport.use(User.createStrategy())
 app.use("/", indexRouter);
 
 //For using the router
-app.use("/book-list", bookRouter);
 app.use("/contact-list", contactRouter);
 
 // catch 404 and forward to error handler
