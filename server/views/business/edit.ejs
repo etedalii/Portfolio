@@ -1,0 +1,65 @@
+<!-- File name: edit.ejs
+    Author's name: Mohammad Etedali - 301056465
+	Website address: https://comp299.herokuapp.com
+    Date: 6/17/21
+	Description: this file is use for update a contact from the database   
+ -->
+
+<%- include ../partials/header.ejs %>
+<%- include ../partials/main_nav.ejs %>
+
+<div class="container">
+    <div class="row">
+      <div class="offset-3 col-md-6 col-lg-6">
+        <h1><%= title %></h1>
+        <form class="form" method="POST">
+          <div class="form-group">
+            <label for="nameTextField">Contact Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nameTextField"
+              placeholder="Enter the contact name"
+              name="name"
+              value="<%= contact.name %>"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="numberTextField">Contact Number</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="numberTextField"
+              placeholder="Enter the contact number"
+              name="number"
+              value="<%= contact.number %>"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="emailTextField">E-mail</label>
+            <input
+              type="email"
+              class="form-control"
+              id="emailTextField"
+              placeholder="Enter the email address"
+              name="email"
+              value="<%= contact.email %>"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary mt-2">
+            <i class="fas fa-pencil-alt"></i> Save
+          </button>
+  
+          <a href="/contact-list" class="btn btn-warning mt-2"
+            ><i class="fas fa-undo"></i> Cancel</a
+          >
+        </form>
+      </div>
+    </div>
+  </div>
+
+<%- include ../partials/bottom_nav.ejs %>
+<%- include ../partials/footer.ejs %>

@@ -1,8 +1,10 @@
 // File name: app.js
 //   Author's name: Mohammad Etedali - 301056465
 //   Website address: https://comp299.herokuapp.com
-//   Date: 6/30/21
+//   Date: 5/30/21
+//   Updated: 06/17/21
 //   Description: This file for configuration the app
+// Add some feature for passport and contact
 
 let createError = require("http-errors");
 let express = require("express");
@@ -32,6 +34,7 @@ monogoDB.once("open", () => {
 
 //change the path because put app.js in config folder
 let indexRouter = require("../routes/index");
+let contactRouter  = require('../routes/business')
 let bookRouter = require("../routes/book");
 
 let app = express();
@@ -79,6 +82,7 @@ app.use("/", indexRouter);
 
 //For using the router
 app.use("/book-list", bookRouter);
+app.use("/contact-list", contactRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
