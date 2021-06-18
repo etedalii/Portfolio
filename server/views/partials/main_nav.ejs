@@ -9,8 +9,8 @@
   <div class="container-fluid">
     <a class="navbar-brand" href="/home"
       ><img
-        src="Assets/images/Logo.png"
-        alt="Web With Mohammad"
+        src="/Assets/images/Logo.png"
+        alt=""
         width="85"
         height="55"
       />
@@ -90,7 +90,7 @@
 
         <% if(typeof currentUser == 'string' && currentUser) { %>
         <li class="navbar-text">
-          <i class="fas fa-lg fa-user"></i> Wellcome, <%= currentUser %>
+          <i class="fas fa-lg fa-user" style="color:green"></i> Wellcome, <%= currentUser %>
         </li>
         <li class="nav-item">
           <a href="/logout" class="nav-link">
