@@ -20,7 +20,7 @@ module.exports.displayHomePage = (req, res, next) => {
     title: "Home",
     message:
       "Web development, especially freelance web development has been steadily growing as businesses are increasingly going online. Many talented developers offer freelance web development in addition to their day jobs or some of them have fully embraced the freelance life. Nevertheless, every web developer that wants to be successful needs to have their web developer portfolio on the internet where it can be accessed easily.",
-    currentUser: req.user ? req.user.email : "",
+    currentUser: req.user ? req.user.username : "",
   });
 };
 
@@ -28,7 +28,7 @@ module.exports.displayProjectPage = (req, res, next) => {
   res.render("index", {
     title: "Project",
     message: "",
-    currentUser: req.user ? req.user.email : "",
+    currentUser: req.user ? req.user.username : "",
   });
 };
 
@@ -36,7 +36,7 @@ module.exports.displayServicePage = (req, res, next) => {
   res.render("index", {
     title: "Service",
     message: "",
-    currentUser: req.user ? req.user.email : "",
+    currentUser: req.user ? req.user.username : "",
   });
 };
 
@@ -44,7 +44,7 @@ module.exports.displayContactPage = (req, res, next) => {
   res.render("index", {
     title: "Contact",
     message: "",
-    currentUser: req.user ? req.user.email : "",
+    currentUser: req.user ? req.user.username : "",
   });
 };
 
@@ -53,7 +53,7 @@ module.exports.displayAboutPage = (req, res, next) => {
     title: "About",
     message:
       "I, Mohammad Etedali with More than 8 years’ experience in programming with Microsoft products, am a responsible, highly motivated, highly organized, result-oriented, and self-motivated person. I have expertise in C# .Net, SQL Server, and ASP.Net MVC.",
-    currentUser: req.user ? req.user.email : "",
+    currentUser: req.user ? req.user.username : "",
   });
 };
 
@@ -63,7 +63,7 @@ module.exports.displayLoginPage = (req, res, next) => {
     res.render("auth/login", {
       title: "Login",
       messages: req.flash("loginMessage"),
-      email: req.user ? req.user.email : "",
+      email: req.user ? req.user.username : "",
     });
   } else {
     res.redirect("/");
@@ -93,7 +93,7 @@ module.exports.processLoginPage = (req, res, next) => {
   })(req, res, next);
 };
 
-//I create this because use for register a user
+//I create this because I need it for register a user.
 // we don't have register for but I wrote this module for insert user in first time
 module.exports.processRegisterPage = (req, res, next) => {
   let newUser = new User({
